@@ -12,6 +12,7 @@ services:
     environment:
       SECRET: "!!!secret!!!"
       EXPIRE: 3600
+      LISTEN_PORT: 9020
     volumes:
       - type: bind
         source: .

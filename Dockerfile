@@ -67,6 +67,9 @@ RUN protoc -I proto \
            proto/auth.proto
 
 # Make binary
-# RUN mkdir build && cd build && cmake .. && make
-# Run binary
-# RUN ./build/gemini
+RUN mkdir -p build && cd build && cmake .. && make
+Run binary
+
+# run binary
+WORKDIR /gemini
+RUN ./build/gemini
