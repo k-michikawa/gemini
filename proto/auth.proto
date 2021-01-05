@@ -1,0 +1,25 @@
+syntax = "proto3";
+package leo;
+
+service AuthService {
+    rpc GetJwt (GetJwtRequest) returns (GetJwtResponse);
+    rpc ValidateJwt (ValidateJwtRequest) returns (ValidateJwtResponse);
+}
+
+// Request Messages
+message GetJwtRequest {
+    string userId = 1;
+}
+
+message ValidateJwtRequest {
+    string token = 1;
+}
+
+// Response Messages
+message GetJwtResponse {
+    string token = 1;
+}
+
+message ValidateJwtResponse {
+    string newToken = 1;
+}

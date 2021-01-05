@@ -26,11 +26,16 @@ else()
   set(_GRPC_CPP_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_cpp_plugin>)
 endif()
 
-include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/pb)
-# lib
+include_directories(${PROJECT_SOURCE_DIR}/pb)
 aux_source_directory(pb PB_FILE)
-aux_source_directory(source/service SERVICE_FILE)
+
+# https://github.com/pokowaka/jwt-cpp#usage
+include_directories(/usr/local/include)
+include_directories(/usr/include/openssl)
+
+set(_OPEN_SSL /usr/lib/x86_64-linux-gnu/openssl-1.0.0)
+set(_JWT /usr/local/lib -lcrypto -ljwt -lssl)
 
 # executable
-add_executable(${PROJECT_NAME} source/main.cpp ${PB_FILE} ${SERVICE_FILE})
-target_link_libraries(${PROJECT_NAME} PRIVATE ${_REFLECTION} ${_GRPC_GRPCPP} ${_PROTOBUF_LIBPROTOBUF})
+add_executable(${PROJECT_NAME} source/main.cpp ${PB_FILE})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${_REFLECTION} ${_GRPC_GRPCPP} ${_PROTOBUF_LIBPROTOBUF} ${_JWT} ${_OPEN_SSL})

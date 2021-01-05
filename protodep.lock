@@ -1,0 +1,8 @@
+proto_outdir = "./proto"
+
+[[dependencies]]
+  target = "github.com/k-michikawa/leo/auth"
+  revision = "889f47863e1410082f10ca293195163031b78e88"
+  branch = "main"
+  path = ""
+  protocol = ""
