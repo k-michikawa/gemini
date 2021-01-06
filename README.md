@@ -2,7 +2,7 @@
 
 ### Description
 
-C++ で　 gRPC を使って JWT のトークン生成と検証を行うやつ
+C++ で gRPC を使って JWT のトークン生成と検証を行うやつ
 
 検証用に grpcurl 入れておくと良いかも
 
